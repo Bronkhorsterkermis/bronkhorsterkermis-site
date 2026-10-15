@@ -63,6 +63,21 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/';
 				const open = document.documentElement.classList.toggle('menu-open');
 				button.setAttribute('aria-expanded', String(open));
 			});
+
+			// The header is sticky. On wide screens it sticks with a negative offset equal to the
+			// title row, so the title scrolls away and only the menu bar stays visible. On phones the
+			// title row holds the Menu button, so the whole (compact) header stays.
+			const root = document.documentElement;
+			const header = document.querySelector<HTMLElement>('.site-header')!;
+			const titleRow = header.querySelector<HTMLElement>('.header-inner')!;
+			const phone = matchMedia('(max-width: 760px)');
+			const measure = () => {
+				const hide = phone.matches ? 0 : titleRow.offsetHeight;
+				root.style.setProperty('--sticky-top', `-${hide}px`);
+				root.style.setProperty('--sticky-height', `${(phone.matches ? titleRow.offsetHeight : header.offsetHeight) - hide}px`);
+			};
+			new ResizeObserver(measure).observe(header);
+			phone.addEventListener('change', measure);
 		</script>
 
 		<div class="wrap layout">

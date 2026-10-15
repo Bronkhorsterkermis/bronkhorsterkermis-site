@@ -83,10 +83,18 @@ h1 {
 
 /* ------------------------------------------------------------ header & menu */
 
+html {
+	/* Keep anchor targets (#jaar-2025, skip link) clear of the sticky menu bar. */
+	scroll-padding-top: calc(var(--sticky-height, 0px) + 1rem);
+}
+
 .site-header {
 	background: var(--rood);
 	color: #fff;
 	border-bottom: 4px solid var(--rood-donker);
+	position: sticky;
+	top: var(--sticky-top, 0px);
+	z-index: 10;
 }
 
 .header-inner {
@@ -158,6 +166,9 @@ h1 {
 	}
 	.js.menu-open .menu {
 		display: block;
+		/* The open menu is longer than a small screen; let it scroll inside the sticky header. */
+		max-height: calc(100dvh - var(--sticky-height, 5rem) - 4px); /* 4px: header border */
+		overflow-y: auto;
 	}
 	.menu ul {
 		flex-direction: column;
