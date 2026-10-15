@@ -13,10 +13,6 @@ media:
     output: /downloads
     categories: [document, audio, video, spreadsheet]
 
-settings:
-  commit:
-    identity: user
-
 content:
   - name: jaren
     label: Kermisjaren (homepage)
