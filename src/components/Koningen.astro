@@ -1,0 +1,102 @@
+---
+import { koningen } from '../lib/data';
+import Foto from './Foto.astro';
+
+const heeftBeeld = (k: (typeof koningen)[number]) => Boolean(k.foto || k.video);
+// The photo grid runs down to the oldest year with a photo; a gap inside that range (e.g. no
+// kermis in 2020–2021) is shown in the grid as a text card, everything older goes in the table.
+const oudsteFoto = Math.min(...koningen.filter(heeftBeeld).map((k) => k.jaar));
+const inGrid = (k: (typeof koningen)[number]) => heeftBeeld(k) || (k.tot !== undefined && k.jaar > oudsteFoto);
+const metFoto = koningen.filter(inGrid);
+const zonderFoto = koningen.filter((k) => !inGrid(k));
+const jaar = (k: (typeof koningen)[number]) => (k.tot ? `${k.jaar}–${k.tot}` : `${k.jaar}`);
+---
+
+<div class="galerij">
+	{
+		metFoto.map((k) => (
+			<figure>
+				{k.foto && <Foto src={k.foto} alt={`Koning ${k.jaar}: ${k.koning}`} width={200} />}
+				{k.video && (
+					<video controls preload="none" src={encodeURI(k.video)}>
+						<a href={encodeURI(k.video)}>Bekijk de video</a>
+					</video>
+				)}
+				{!heeftBeeld(k) && <div class="geen-foto">{k.opmerking}</div>}
+				<figcaption>
+					<strong>{jaar(k)}</strong>
+					{k.koning && <span>{k.koning}</span>}
+					{k.opmerking && heeftBeeld(k) && <span class="muted">{k.opmerking}</span>}
+				</figcaption>
+			</figure>
+		))
+	}
+</div>
+
+<h2>Verder terug in de geschiedenis</h2>
+<p class="muted">Helaas zonder foto's.</p>
+<table>
+	<tbody>
+		{
+			zonderFoto.map((k) => (
+				<tr>
+					<th scope="row">{jaar(k)}</th>
+					<td>
+						{k.koning}
+						{k.opmerking && <span class="muted"> {k.opmerking}</span>}
+					</td>
+				</tr>
+			))
+		}
+	</tbody>
+</table>
+
+<style>
+	.galerij {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+		gap: 1.5rem 1rem;
+		margin-bottom: 2.5rem;
+	}
+	figure {
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+	}
+	video {
+		width: 100%;
+		border-radius: var(--radius);
+	}
+	.geen-foto {
+		display: grid;
+		place-items: center;
+		aspect-ratio: 3 / 4;
+		padding: 1rem;
+		text-align: center;
+		font-size: 0.9rem;
+		color: var(--muted);
+		border: 1px dashed var(--line);
+		border-radius: var(--radius);
+	}
+	figcaption {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		font-size: 0.9rem;
+		margin-top: 0.4rem;
+	}
+	table {
+		border-collapse: collapse;
+	}
+	th,
+	td {
+		text-align: left;
+		padding: 0.3rem 1.25rem 0.3rem 0;
+		border-bottom: 1px solid var(--line);
+		vertical-align: top;
+	}
+	th {
+		white-space: nowrap;
+	}
+</style>

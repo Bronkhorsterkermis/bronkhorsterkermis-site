@@ -1,0 +1,31 @@
+---
+import { fotoarchief } from '../lib/data';
+import Foto from './Foto.astro';
+---
+
+<div class="archief">
+	{
+		fotoarchief.map((f) => (
+			<figure>
+				{f.foto && <Foto src={f.foto} alt={f.bijschrift || 'Archieffoto'} width={420} />}
+				{f.bijschrift && <figcaption>{f.bijschrift}</figcaption>}
+			</figure>
+		))
+	}
+</div>
+
+<style>
+	.archief {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+		gap: 2rem 1.5rem;
+	}
+	figure {
+		margin: 0;
+	}
+	figcaption {
+		font-size: 0.925rem;
+		color: var(--muted);
+		margin-top: 0.4rem;
+	}
+</style>

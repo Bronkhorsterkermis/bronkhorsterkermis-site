@@ -1,0 +1,85 @@
+---
+import { getCollection } from 'astro:content';
+import { siteInfo } from '../lib/data';
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { title, description = siteInfo.omschrijving } = Astro.props;
+const pageTitle = title ? `${title} | ${siteInfo.naam}` : siteInfo.naam;
+
+const menu = (await getCollection('pages', (p) => p.data.inMenu)).sort(
+	(a, b) => a.data.volgorde - b.data.volgorde,
+);
+const href = (id: string) => (id === 'home' ? '/' : `/${id}`);
+const current = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<!doctype html>
+<html lang="nl">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{pageTitle}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<script is:inline>document.documentElement.classList.add('js');</script>
+	</head>
+	<body>
+		<a class="skip" href="#inhoud">Naar de inhoud</a>
+		<header class="site-header">
+			<div class="wrap header-inner">
+				<a class="wordmark" href="/">
+					<span class="wordmark-small">Schutterij</span>
+					<span class="wordmark-big">Eendracht van Bronkhorst</span>
+				</a>
+				<button class="menu-button" type="button" aria-expanded="false" aria-controls="hoofdmenu">
+					Menu
+				</button>
+			</div>
+			<nav id="hoofdmenu" class="wrap menu" aria-label="Hoofdmenu">
+				<ul>
+					{
+						menu.map((p) => (
+							<li>
+								<a href={href(p.id)} aria-current={href(p.id) === current ? 'page' : undefined}>
+									{p.data.titel}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</nav>
+		</header>
+		<script>
+			// Without JS the menu simply stays open; with JS it collapses behind a button on phones.
+			const button = document.querySelector<HTMLButtonElement>('.menu-button')!;
+			button.addEventListener('click', () => {
+				const open = document.documentElement.classList.toggle('menu-open');
+				button.setAttribute('aria-expanded', String(open));
+			});
+		</script>
+
+		<div class="wrap layout">
+			<main id="inhoud">
+				<slot />
+			</main>
+			<aside class="info">
+				<h2>Contact</h2>
+				<p class="pre">{siteInfo.correspondentie}</p>
+				<p><a href={`mailto:${siteInfo.email}`}>{siteInfo.email}</a></p>
+				<h2>Bankrekening</h2>
+				<p>{siteInfo.bankrekening}</p>
+			</aside>
+		</div>
+
+		<footer class="site-footer">
+			<div class="wrap">© {new Date().getFullYear()} {siteInfo.naam}</div>
+		</footer>
+	</body>
+</html>

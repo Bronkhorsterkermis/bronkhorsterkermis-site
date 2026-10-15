@@ -1,0 +1,210 @@
+# Pages CMS configuration (https://pagescms.org/docs/configuration/).
+# Editors work in the Pages CMS web app; every save is a commit, and the host rebuilds the site.
+
+media:
+  - name: fotos
+    label: Foto's
+    input: src/assets/media
+    output: /media
+    categories: [image]
+  - name: downloads
+    label: Downloads (PDF, Word)
+    input: public/downloads
+    output: /downloads
+    categories: [document, audio, video, spreadsheet]
+
+settings:
+  commit:
+    identity: user
+
+content:
+  - name: jaren
+    label: Kermisjaren (homepage)
+    type: collection
+    path: src/content/jaren
+    format: yaml-frontmatter
+    filename: '{fields.jaar}.md'
+    view:
+      primary: jaar
+      fields: [jaar]
+      sort: [jaar]
+      default:
+        sort: jaar
+        order: desc
+    fields:
+      - name: jaar
+        label: Jaar
+        type: number
+        required: true
+      - name: fotoalbum
+        label: Link naar fotoalbum (Google Drive)
+        type: string
+      - name: items
+        label: Foto's met bijschrift
+        type: object
+        list: true
+        fields:
+          - name: foto
+            label: Foto
+            type: image
+            options:
+              media: fotos
+              rename: true
+              path: src/assets/media/jaren
+          - name: bijschrift
+            label: Bijschrift
+            type: text
+      - name: body
+        label: Extra tekst (optioneel)
+        type: rich-text
+        options:
+          format: markdown
+          media: fotos
+          path: src/assets/media/jaren
+
+  - name: documenten
+    label: Activiteiten (programma's, notulen, uitnodigingen)
+    type: file
+    path: src/data/documenten.json
+    format: json
+    list: true
+    fields:
+      - name: jaar
+        label: Jaar
+        type: number
+        required: true
+      - name: soort
+        label: Soort
+        type: select
+        required: true
+        options:
+          values:
+            - Programma kermis
+            - Uitnodiging rekening & verantwoording
+            - Notulen rekening & verantwoording
+            - Winterkostmaaltijd / overig
+      - name: bestand
+        label: Bestand
+        type: file
+        required: true
+        options:
+          media: downloads
+      - name: titel
+        label: Linktekst (leeg = het jaartal)
+        type: string
+
+  - name: koningen
+    label: Galerij der Koningen
+    type: file
+    path: src/data/koningen.json
+    format: json
+    list: true
+    fields:
+      - name: jaar
+        label: Jaar
+        type: number
+        required: true
+      - name: tot
+        label: Tot en met jaar (alleen voor een periode, bv. geen kermis)
+        type: number
+      - name: koning
+        label: Koning(spaar)
+        type: string
+      - name: foto
+        label: Foto
+        type: image
+        options:
+          media: fotos
+          rename: true
+          path: src/assets/media/koningen
+      - name: video
+        label: Video
+        type: file
+        options:
+          media: downloads
+      - name: opmerking
+        label: Opmerking
+        type: string
+
+  - name: fotoarchief
+    label: Foto Archief
+    type: file
+    path: src/data/fotoarchief.json
+    format: json
+    list: true
+    fields:
+      - name: foto
+        label: Foto
+        type: image
+        options:
+          media: fotos
+          rename: true
+          path: src/assets/media/fotoarchief
+      - name: bijschrift
+        label: Bijschrift
+        type: text
+
+  - name: pages
+    label: Pagina's
+    type: collection
+    path: src/content/pages
+    format: yaml-frontmatter
+    filename: '{primary}.md'
+    view:
+      primary: titel
+      fields: [titel, volgorde]
+      default:
+        sort: volgorde
+        order: asc
+    fields:
+      - name: titel
+        label: Titel
+        type: string
+        required: true
+      - name: volgorde
+        label: Positie in het menu
+        type: number
+      - name: inMenu
+        label: Tonen in het menu
+        type: boolean
+        default: true
+      - name: body
+        label: Tekst
+        type: rich-text
+        options:
+          format: markdown
+          media: fotos
+          path: src/assets/media/pages
+      # Technical fields: hidden from editors but declared so saving a page keeps them.
+      - name: bijlage
+        label: Vaste sectie
+        type: select
+        hidden: true
+        options:
+          values: [kermisjaren, documenten, koningen, fotoarchief]
+      - name: legacyId
+        label: Oud paginanummer
+        type: number
+        hidden: true
+
+  - name: site
+    label: Contactgegevens
+    type: file
+    path: src/data/site.json
+    format: json
+    fields:
+      - name: naam
+        label: Naam vereniging
+        type: string
+      - name: omschrijving
+        label: Omschrijving (voor zoekmachines)
+        type: text
+      - name: email
+        label: E-mailadres
+        type: string
+      - name: bankrekening
+        label: Bankrekening
+        type: string
+      - name: correspondentie
+        label: Correspondentieadres
+        type: text

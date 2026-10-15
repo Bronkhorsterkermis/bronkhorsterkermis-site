@@ -1,0 +1,70 @@
+---
+import { getCollection, render } from 'astro:content';
+import Foto from './Foto.astro';
+
+const jaren = (await getCollection('jaren')).sort((a, b) => b.data.jaar - a.data.jaar);
+const rendered = await Promise.all(jaren.map((j) => render(j)));
+---
+
+{
+	jaren.map((jaar, i) => {
+		const { Content } = rendered[i];
+		return (
+			<section class="jaar" id={`jaar-${jaar.data.jaar}`}>
+				<header>
+					<h2>Kermis {jaar.data.jaar}</h2>
+					{jaar.data.fotoalbum && (
+						<a class="album" href={jaar.data.fotoalbum} target="_blank" rel="noopener">
+							Alle foto's van {jaar.data.jaar} →
+						</a>
+					)}
+				</header>
+				<div class="items">
+					{jaar.data.items.map((item) => (
+						<figure>
+							{item.foto && <Foto src={item.foto} alt={item.bijschrift || `Kermis ${jaar.data.jaar}`} width={360} />}
+							{item.bijschrift && <figcaption>{item.bijschrift}</figcaption>}
+						</figure>
+					))}
+				</div>
+				<div class="prose">
+					<Content />
+				</div>
+			</section>
+		);
+	})
+}
+
+<style>
+	.jaar {
+		padding: 1.5rem 0;
+		border-top: 1px solid var(--line);
+	}
+	header {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 0.5rem 1rem;
+	}
+	h2 {
+		margin: 0 0 1rem;
+		color: var(--accent-text);
+	}
+	.album {
+		font-weight: 600;
+	}
+	.items {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+		gap: 1.25rem;
+	}
+	figure {
+		margin: 0;
+	}
+	figcaption {
+		font-size: 0.925rem;
+		color: var(--muted);
+		margin-top: 0.4rem;
+	}
+</style>

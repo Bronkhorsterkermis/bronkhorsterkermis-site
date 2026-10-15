@@ -1,0 +1,507 @@
+[
+  {
+    "jaar": 2025,
+    "koning": "Arjan Woestenenk",
+    "foto": "/media/koningen/2025-arjan-woestenenk.jpg"
+  },
+  {
+    "jaar": 2024,
+    "koning": "Willem Pasman",
+    "foto": "/media/koningen/2024-willem-pasman.jpg"
+  },
+  {
+    "jaar": 2023,
+    "koning": "Tom Hoppenreijs",
+    "foto": "/media/koningen/2023-tom-hoppenreijs.jpg"
+  },
+  {
+    "jaar": 2022,
+    "koning": "Dolf Pasman",
+    "foto": "/media/koningen/2022-dolf-pasman.jpg"
+  },
+  {
+    "jaar": 2020,
+    "tot": 2021,
+    "opmerking": "Geen kermis i.v.m. de coronapandemie."
+  },
+  {
+    "jaar": 2019,
+    "koning": "Arjan Woestenenk",
+    "foto": "/media/koningen/2019-arjan-woestenenk.jpg"
+  },
+  {
+    "jaar": 2018,
+    "koning": "Maikel van Iperen",
+    "foto": "/media/koningen/2018-maikel-van-iperen.jpg"
+  },
+  {
+    "jaar": 2017,
+    "koning": "Jasper Huetink",
+    "foto": "/media/koningen/2017-jasper-huetink.jpg"
+  },
+  {
+    "jaar": 2016,
+    "koning": "Herman Meutstege",
+    "foto": "/media/koningen/2016-herman-meutstege.jpg"
+  },
+  {
+    "jaar": 2015,
+    "koning": "Martijn Ketz",
+    "foto": "/media/koningen/2015-martijn-ketz.jpg"
+  },
+  {
+    "jaar": 2014,
+    "koning": "Gijs Wildeboer",
+    "foto": "/media/koningen/2014-gijs-wildeboer.jpg"
+  },
+  {
+    "jaar": 2013,
+    "koning": "Herman Meutstege",
+    "foto": "/media/koningen/2013-herman-meutstege.png"
+  },
+  {
+    "jaar": 2012,
+    "koning": "Gerard Huetink",
+    "foto": "/media/koningen/2012-gerard-huetink.jpg"
+  },
+  {
+    "jaar": 2011,
+    "koning": "Willy Pasman",
+    "foto": "/media/koningen/2011-willy-pasman.jpg"
+  },
+  {
+    "jaar": 2010,
+    "koning": "Frank Helming",
+    "foto": "/media/koningen/2010-frank-helming.jpg"
+  },
+  {
+    "jaar": 2009,
+    "koning": "Gert Jan Massink",
+    "foto": "/media/koningen/2009-gert-jan-massink.jpg"
+  },
+  {
+    "jaar": 2008,
+    "koning": "Marc-HugoTan",
+    "foto": "/media/koningen/2008-marc-hugotan.jpg"
+  },
+  {
+    "jaar": 2007,
+    "koning": "Ruud Engelaar",
+    "foto": "/media/koningen/2007-ruud-engelaar.jpg"
+  },
+  {
+    "jaar": 2006,
+    "koning": "Jan Wolters",
+    "foto": "/media/koningen/2006-jan-wolters.jpg"
+  },
+  {
+    "jaar": 2005,
+    "koning": "Ton Helming",
+    "foto": "/media/koningen/2005-ton-helming.jpg"
+  },
+  {
+    "jaar": 2004,
+    "koning": "Andre Bijenhof",
+    "foto": "/media/koningen/2004-andre-bijenhof.jpg"
+  },
+  {
+    "jaar": 2003,
+    "koning": "Jan Wolters",
+    "foto": "/media/koningen/2003-jan-wolters.jpg"
+  },
+  {
+    "jaar": 2002,
+    "koning": "Gerard Roelofs",
+    "foto": "/media/koningen/2002-gerard-roelofs.jpg"
+  },
+  {
+    "jaar": 2001,
+    "koning": "Dirk Koopmans",
+    "foto": "/media/koningen/2001-dirk-koopmans.jpg"
+  },
+  {
+    "jaar": 2000,
+    "koning": "Willy Pasman",
+    "foto": "/media/koningen/2000-willy-pasman.jpg"
+  },
+  {
+    "jaar": 1999,
+    "koning": "Thijs Helming",
+    "foto": "/media/koningen/1999-thijs-helming.jpg"
+  },
+  {
+    "jaar": 1998,
+    "koning": "Gerrit ter Wee",
+    "foto": "/media/koningen/1998-gerrit-ter-wee.jpg"
+  },
+  {
+    "jaar": 1997,
+    "koning": "Evert ter Wee",
+    "foto": "/media/koningen/1997-evert-ter-wee.jpg"
+  },
+  {
+    "jaar": 1996,
+    "koning": "Dolf Pasman",
+    "foto": "/media/koningen/1996-dolf-pasman.jpg"
+  },
+  {
+    "jaar": 1995,
+    "koning": "Kees Beulenkamp",
+    "foto": "/media/koningen/1995-kees-beulenkamp.jpg"
+  },
+  {
+    "jaar": 1994,
+    "koning": "Andre Bijenhof",
+    "foto": "/media/koningen/1994-andre-bijenhof.jpg"
+  },
+  {
+    "jaar": 1993,
+    "koning": "Carel Eijgenraam",
+    "foto": "/media/koningen/1993-carel-eijgenraam.jpg"
+  },
+  {
+    "jaar": 1992,
+    "koning": "Jaap Pennekamp",
+    "foto": "/media/koningen/1992-jaap-pennekamp.jpg"
+  },
+  {
+    "jaar": 1991,
+    "koning": "Henk Harmsen",
+    "foto": "/media/koningen/1991-henk-harmsen.jpg"
+  },
+  {
+    "jaar": 1990,
+    "koning": "Theo Wentink",
+    "foto": "/media/koningen/1990-theo-wentink.jpg"
+  },
+  {
+    "jaar": 1989,
+    "koning": "Ap Mennink",
+    "foto": "/media/koningen/1989-ap-mennink.jpg"
+  },
+  {
+    "jaar": 1988,
+    "koning": "Erik Veenstra",
+    "foto": "/media/koningen/1988-erik-veenstra.jpg"
+  },
+  {
+    "jaar": 1987,
+    "koning": "Frank Hendriks",
+    "foto": "/media/koningen/1987-frank-hendriks.jpg"
+  },
+  {
+    "jaar": 1986,
+    "koning": "Jos Harmsen",
+    "foto": "/media/koningen/1986-jos-harmsen.jpg"
+  },
+  {
+    "jaar": 1985,
+    "koning": "Gerrit Meutstege",
+    "foto": "/media/koningen/1985-gerrit-meutstege.jpg"
+  },
+  {
+    "jaar": 1984,
+    "koning": "Steve Gammage",
+    "foto": "/media/koningen/1984-steve-gammage.jpg"
+  },
+  {
+    "jaar": 1983,
+    "koning": "Dick Zelle",
+    "foto": "/media/koningen/1983-dick-zelle.jpg"
+  },
+  {
+    "jaar": 1982,
+    "koning": "Hendrik Nijenhuis",
+    "foto": "/media/koningen/1982-hendrik-nijenhuis.jpg"
+  },
+  {
+    "jaar": 1981,
+    "koning": "Ton Helming",
+    "foto": "/media/koningen/1981-ton-helming.jpg"
+  },
+  {
+    "jaar": 1980,
+    "koning": "Gert-Jan Huetink",
+    "foto": "/media/koningen/1980-gert-jan-huetink.jpg"
+  },
+  {
+    "jaar": 1979,
+    "koning": "Cor Bosman",
+    "foto": "/media/koningen/1979-cor-bosman.jpg"
+  },
+  {
+    "jaar": 1978,
+    "koning": "Cor Bosman",
+    "foto": "/media/koningen/1978-cor-bosman.jpg"
+  },
+  {
+    "jaar": 1977,
+    "koning": "Andre Bijenhof",
+    "foto": "/media/koningen/1977-andre-bijenhof.jpg"
+  },
+  {
+    "jaar": 1976,
+    "koning": "Hein Konijnenberg",
+    "foto": "/media/koningen/1976-hein-konijnenberg.jpg"
+  },
+  {
+    "jaar": 1975,
+    "koning": "Maarten Breukink",
+    "foto": "/media/koningen/1975-maarten-breukink.jpg"
+  },
+  {
+    "jaar": 1974,
+    "koning": "Eb Nijenhuis",
+    "foto": "/media/koningen/1974-eb-nijenhuis.jpg"
+  },
+  {
+    "jaar": 1973,
+    "koning": "Henk Boogman",
+    "foto": "/media/koningen/1973-henk-boogman.jpg"
+  },
+  {
+    "jaar": 1972,
+    "koning": "Hendrik Nijenhuis",
+    "foto": "/media/koningen/1972-hendrik-nijenhuis.jpg"
+  },
+  {
+    "jaar": 1971,
+    "koning": "Harrij Ovink",
+    "foto": "/media/koningen/1971-harrij-ovink.jpg"
+  },
+  {
+    "jaar": 1970,
+    "koning": "Jan Wolters",
+    "foto": "/media/koningen/1970-jan-wolters.jpg"
+  },
+  {
+    "jaar": 1969,
+    "koning": "Henne Scholten",
+    "foto": "/media/koningen/1969-henne-scholten.jpg"
+  },
+  {
+    "jaar": 1968,
+    "koning": "Berend Hoogkamp",
+    "foto": "/media/koningen/1968-berend-hoogkamp.jpg"
+  },
+  {
+    "jaar": 1967,
+    "koning": "Cor van Viegen",
+    "foto": "/media/koningen/1967-cor-van-viegen.jpg"
+  },
+  {
+    "jaar": 1966,
+    "koning": "Hendrik Nijenhuis",
+    "foto": "/media/koningen/1966-hendrik-nijenhuis.jpg"
+  },
+  {
+    "jaar": 1965,
+    "koning": "Evert Knaake",
+    "foto": "/media/koningen/1965-evert-knaake.jpg"
+  },
+  {
+    "jaar": 1964,
+    "koning": "Henk Hulshof",
+    "foto": "/media/koningen/1964-henk-hulshof.jpg"
+  },
+  {
+    "jaar": 1963,
+    "koning": "Henk Hulshof",
+    "foto": "/media/koningen/1963-henk-hulshof.jpg"
+  },
+  {
+    "jaar": 1962,
+    "koning": "M. van Mourik"
+  },
+  {
+    "jaar": 1961,
+    "koning": "Wim Bosman",
+    "foto": "/media/koningen/1961-wim-bosman.jpg"
+  },
+  {
+    "jaar": 1960,
+    "koning": "Ap Hendriksen",
+    "foto": "/media/koningen/1960-ap-hendriksen.jpg"
+  },
+  {
+    "jaar": 1959,
+    "koning": "Wim Bosman",
+    "foto": "/media/koningen/1959-wim-bosman.jpg"
+  },
+  {
+    "jaar": 1958,
+    "koning": "Henne Knaake",
+    "foto": "/media/koningen/1958-henne-knaake.jpg"
+  },
+  {
+    "jaar": 1957,
+    "koning": "H. Nijenhuis"
+  },
+  {
+    "jaar": 1956,
+    "koning": "G. Harmsen"
+  },
+  {
+    "jaar": 1955,
+    "koning": "Anton Harmsen en … Harmsen-Vriezekolk",
+    "video": "/downloads/ezgif-3-4923bc5ef9.mp4",
+    "opmerking": "Fragment uit het Polygoon-journaal van 1955."
+  },
+  {
+    "jaar": 1954,
+    "koning": "Gerrit Harmsen",
+    "foto": "/media/koningen/1954-gerrit-harmsen.jpg"
+  },
+  {
+    "jaar": 1953,
+    "koning": "Teunis van Viegen",
+    "foto": "/media/koningen/1953-teunis-van-viegen.jpg"
+  },
+  {
+    "jaar": 1952,
+    "koning": "Jo Mennink",
+    "foto": "/media/koningen/1952-jo-mennink.jpg"
+  },
+  {
+    "jaar": 1951,
+    "koning": "W. Hulshof"
+  },
+  {
+    "jaar": 1950,
+    "koning": "Henk Boesveld",
+    "foto": "/media/koningen/1950-henk-boesveld.jpg"
+  },
+  {
+    "jaar": 1949,
+    "koning": "Gerrit Harmsen",
+    "foto": "/media/koningen/1949-gerrit-harmsen.jpg"
+  },
+  {
+    "jaar": 1948,
+    "koning": "G. Harmsen"
+  },
+  {
+    "jaar": 1947,
+    "koning": "?"
+  },
+  {
+    "jaar": 1946,
+    "koning": "A. Wiggerink"
+  },
+  {
+    "jaar": 1945,
+    "koning": "?"
+  },
+  {
+    "jaar": 1939,
+    "tot": 1944,
+    "opmerking": "Geen kermis i.v.m. de Tweede Wereldoorlog."
+  },
+  {
+    "jaar": 1938,
+    "koning": "Gerrit de Wit en Nolda Wentink"
+  },
+  {
+    "jaar": 1937,
+    "koning": "Hein Knaake en Johanna van Veldhuizen"
+  },
+  {
+    "jaar": 1936,
+    "koning": "Willem Hulshof en Jantje Flamma",
+    "foto": "/media/koningen/1936-willem-hulshof.jpg"
+  },
+  {
+    "jaar": 1935,
+    "koning": "B. Wolff"
+  },
+  {
+    "jaar": 1934,
+    "koning": "Anton van Viegen en Marie Hissink"
+  },
+  {
+    "jaar": 1933,
+    "koning": "Hendrik Ovink en Riek Boogman"
+  },
+  {
+    "jaar": 1932,
+    "koning": "Bart Wolff en Jantje Wolf-Keurhorst"
+  },
+  {
+    "jaar": 1931,
+    "koning": "J.E. Wolff"
+  },
+  {
+    "jaar": 1930,
+    "koning": "Willem Hulshof en Jantje Flamma"
+  },
+  {
+    "jaar": 1929,
+    "koning": "J. Hulshof"
+  },
+  {
+    "jaar": 1928,
+    "koning": "E.J.Wolf en Jans Ovink"
+  },
+  {
+    "jaar": 1927,
+    "koning": "Arend en Mies Wiggerink",
+    "opmerking": "Eerste jaar dat gehuwde mannen mogen schieten."
+  },
+  {
+    "jaar": 1926,
+    "koning": "Gerrit Wolff en Aaltje Mennink"
+  },
+  {
+    "jaar": 1925,
+    "koning": "A. Mennink en Hanna van Veldhuizen"
+  },
+  {
+    "jaar": 1924,
+    "koning": "Gerrit Wolf en Jeanette Aussen"
+  },
+  {
+    "jaar": 1923,
+    "koning": "Alexander Saalmink en Dina Meenink"
+  },
+  {
+    "jaar": 1922,
+    "koning": "Ad Vrendenberg en Christien Wiemer"
+  },
+  {
+    "jaar": 1921,
+    "koning": "Jacob Saalmink en J.Harmsen"
+  },
+  {
+    "jaar": 1920,
+    "koning": "J.Wolf en J.Meutstege"
+  },
+  {
+    "jaar": 1919,
+    "koning": "Adriaan Meutstege en Jans Ovink"
+  },
+  {
+    "jaar": 1914,
+    "tot": 1918,
+    "opmerking": "Geen kermis i.v.m. de Eerste Wereldoorlog."
+  },
+  {
+    "jaar": 1913,
+    "koning": "Hendrik van Veldhuizen en Geertje Meutstege"
+  },
+  {
+    "jaar": 1912,
+    "koning": "Derk Gerritsen en Grada Meutstege"
+  },
+  {
+    "jaar": 1911,
+    "koning": "Hendrik van Veldhuizen (Onderstraat 6)"
+  },
+  {
+    "jaar": 1910,
+    "koning": "Johan Wolf"
+  },
+  {
+    "jaar": 1893,
+    "koning": "E. Hendriksen"
+  }
+]

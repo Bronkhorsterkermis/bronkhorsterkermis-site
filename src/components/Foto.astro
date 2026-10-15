@@ -1,0 +1,37 @@
+---
+/** A content image (CMS path "/media/..."), resized, linking to a large version. */
+import { Image, getImage } from 'astro:assets';
+import { media } from '../lib/media';
+
+interface Props {
+	src: string;
+	alt: string;
+	/** Rendered width hint for responsive sizes, in CSS pixels. */
+	width?: number;
+}
+
+const { src, alt, width = 480 } = Astro.props;
+const image = media(src);
+const large = await getImage({ src: image, width: Math.min(image.width, 1600) });
+---
+
+<a class="foto" href={large.src} target="_blank" rel="noopener">
+	<Image
+		src={image}
+		alt={alt}
+		widths={[width, width * 2].filter((w) => w <= image.width)}
+		sizes={`(max-width: ${width + 32}px) calc(100vw - 32px), ${width}px`}
+	/>
+</a>
+
+<style>
+	.foto {
+		display: block;
+		line-height: 0;
+	}
+	.foto :global(img) {
+		width: 100%;
+		height: auto;
+		border-radius: var(--radius);
+	}
+</style>

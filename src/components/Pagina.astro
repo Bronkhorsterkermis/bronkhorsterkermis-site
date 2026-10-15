@@ -1,0 +1,28 @@
+---
+/** Renders a page entry: its title, Markdown body and, if set, its structured-data section. */
+import { render, type CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Kermisjaren from './Kermisjaren.astro';
+import Documenten from './Documenten.astro';
+import Koningen from './Koningen.astro';
+import Fotoarchief from './Fotoarchief.astro';
+
+interface Props {
+	page: CollectionEntry<'pages'>;
+}
+
+const { page } = Astro.props;
+const { Content } = await render(page);
+const isHome = page.id === 'home';
+---
+
+<Base title={isHome ? undefined : page.data.titel}>
+	<h1>{isHome ? 'Bronkhorster kermis' : page.data.titel}</h1>
+	<div class="prose">
+		<Content />
+	</div>
+	{page.data.bijlage === 'kermisjaren' && <Kermisjaren />}
+	{page.data.bijlage === 'documenten' && <Documenten />}
+	{page.data.bijlage === 'koningen' && <Koningen />}
+	{page.data.bijlage === 'fotoarchief' && <Fotoarchief />}
+</Base>
