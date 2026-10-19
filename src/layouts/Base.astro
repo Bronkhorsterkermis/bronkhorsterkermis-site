@@ -15,7 +15,13 @@ const menu = (await getCollection('pages', (p) => p.data.inMenu)).sort(
 	(a, b) => a.data.volgorde - b.data.volgorde,
 );
 const href = (id: string) => (id === 'home' ? '/' : `/${id}`);
-const current = Astro.url.pathname.replace(/\/$/, '') || '/';
+// With build.format 'file' the build-time path is "/activiteiten.html" (or "/index.html");
+// the public URL is "/activiteiten" (or "/").
+const current =
+	Astro.url.pathname
+		.replace(/\.html$/, '')
+		.replace(/\/index$/, '')
+		.replace(/\/$/, '') || '/';
 ---
 
 <!doctype html>
@@ -25,7 +31,7 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/';
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>{pageTitle}</title>
 		<meta name="description" content={description} />
-		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+		<link rel="canonical" href={new URL(current, Astro.site)} />
 		<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
 		<link rel="icon" type="image/png" href="/icon-192.png" sizes="192x192" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
