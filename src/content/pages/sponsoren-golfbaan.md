@@ -11,31 +11,29 @@ legacyId: 5
 
 **Mede dankzij onderstaande bedrijven kan Bronkhorst haar unieke kermisattractie behouden:**
 
-- Agrec Zelle Beheer
-- Anacon Infra
+- Anacon-Infra BV
 - Autobedrijf Aal
 - Autobedrijf Kluit
+- B&B Huisje aan het Hof
 - Belangengroep Stad Bronkhorst
 - Boek van Bronkhorst
 - Boutique B&B De Hulshof
-- Breehegge
+- Bronckhorster Bierbrouwerij
 - Chocolaterie Magdalena
+- De Huisvader BV
 - DK Makelaars
-- Drive4Wind
-- Greven & Van Haaster Groenadviseurs
+- Drive4wind
 - Herwers Beheer BV
-- Huisartsen Hendrix
-- Le Large Project Centre
+- Huisartsenpraktijk Hendrikx
 - Marketz Installatiebedrijf
-- Massink Bromfietsen
-- Mathé Ontwerp & Constr.
-- Melkveebedrijf Huetink
-- Melkveebedrijf Huetink Halve Welle
-- Michael van Iperen
-- Pasman Motoren
-- Piancc
+- Massink Bromfietsen, Motoren & Zündapp Onderdelen
+- Mathé, Mascha Theater
+- Melkveebedrijf de Halve Welle
+- Melkveebedrijf ’t Groenendal
+- MysteryShirt BV
+- Pasman Motoren & aggregaten
 - Romatec BV
+- Schik-Civiel
 - Signaal Reclame
-- Voetbaltrips.com
-- WARC Architecten
+- Warc Architecten
 - Zonneheerd Legal BV
