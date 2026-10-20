@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import { siteInfo } from '../lib/data';
+import Lightbox from '../components/Lightbox.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -100,6 +101,8 @@ const current =
 				<p>{siteInfo.bankrekening}</p>
 			</aside>
 		</div>
+
+		<Lightbox />
 
 		<footer class="site-footer">
 			<div class="wrap">© {new Date().getFullYear()} {siteInfo.naam}</div>

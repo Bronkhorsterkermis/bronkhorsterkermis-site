@@ -14,8 +14,9 @@ const rendered = await Promise.all(jaren.map((j) => render(j)));
 				<header>
 					<h2>Kermis {jaar.data.jaar}</h2>
 					{jaar.data.fotoalbum && (
-						<a class="album" href={jaar.data.fotoalbum} target="_blank" rel="noopener">
-							Alle foto's van {jaar.data.jaar} →
+						<a class="album extern" href={jaar.data.fotoalbum} target="_blank" rel="noopener">
+							Alle foto's van {jaar.data.jaar}
+							<span class="sr-only"> (opent in een nieuw tabblad)</span>
 						</a>
 					)}
 				</header>

@@ -1,5 +1,8 @@
 ---
-/** A content image (CMS path "/media/..."), resized, linking to a large version. */
+/**
+ * A content image (CMS path "/media/..."), resized, linking to a large version that the
+ * Lightbox shows full-screen (data-srcset lets phones load the 800px variant).
+ */
 import { Image, getImage } from 'astro:assets';
 import { media } from '../lib/media';
 
@@ -12,10 +15,16 @@ interface Props {
 
 const { src, alt, width = 480 } = Astro.props;
 const image = media(src);
-const large = await getImage({ src: image, width: Math.min(image.width, 1600) });
+const groot = await Promise.all(
+	[...new Set([800, 1600].map((w) => Math.min(w, image.width)))].map((w) =>
+		getImage({ src: image, width: w }).then((r) => ({ w, src: r.src })),
+	),
+);
+const largest = groot[groot.length - 1].src;
+const srcset = groot.map((g) => `${g.src} ${g.w}w`).join(', ');
 ---
 
-<a class="foto" href={large.src} target="_blank" rel="noopener">
+<a class="foto" href={largest} data-lightbox data-srcset={srcset}>
 	<Image
 		src={image}
 		alt={alt}

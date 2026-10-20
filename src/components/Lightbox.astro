@@ -1,0 +1,225 @@
+---
+/**
+ * Full-screen photo viewer for every photo on the page: photos from the Foto component
+ * (a[data-lightbox]) and images in Markdown text (wrapped by the script below).
+ * Without JS a photo link simply opens the large image.
+ *
+ * Phone: swipe left/right, pinch to zoom, Back button/gesture closes.
+ * Desktop: arrow keys, Esc, click outside the photo to close.
+ */
+---
+
+<dialog class="lightbox" aria-label="Foto">
+	<figure>
+		<img alt="" />
+		<figcaption></figcaption>
+	</figure>
+	<p class="lb-count" aria-live="polite"></p>
+	<button class="lb-close" type="button" aria-label="Sluiten">×</button>
+	<button class="lb-prev" type="button" aria-label="Vorige foto">‹</button>
+	<button class="lb-next" type="button" aria-label="Volgende foto">›</button>
+</dialog>
+
+<script>
+	const dialog = document.querySelector<HTMLDialogElement>('dialog.lightbox')!;
+	const img = dialog.querySelector('img')!;
+	const caption = dialog.querySelector('figcaption')!;
+	const count = dialog.querySelector<HTMLElement>('.lb-count')!;
+
+	// Images in Markdown text aren't links; wrap them so they open in the viewer too.
+	for (const el of document.querySelectorAll<HTMLImageElement>('main .prose img')) {
+		if (el.closest('a')) continue;
+		const a = document.createElement('a');
+		a.href = el.getAttribute('src') ?? '';
+		a.className = 'foto-tekst';
+		a.dataset.lightbox = '';
+		el.replaceWith(a);
+		a.append(el);
+	}
+
+	const links = [...document.querySelectorAll<HTMLAnchorElement>('main a[data-lightbox]')];
+	let index = 0;
+
+	function captionFor(a: HTMLAnchorElement) {
+		const fc = a.closest('figure')?.querySelector('figcaption');
+		return fc?.textContent?.trim() || a.querySelector('img')?.alt || '';
+	}
+
+	function show(i: number) {
+		index = (i + links.length) % links.length;
+		const a = links[index];
+		img.removeAttribute('srcset');
+		if (a.dataset.srcset) {
+			img.srcset = a.dataset.srcset;
+			img.sizes = '100vw';
+		}
+		img.src = a.href;
+		img.alt = a.querySelector('img')?.alt ?? '';
+		caption.textContent = captionFor(a);
+		count.textContent = links.length > 1 ? `${index + 1} / ${links.length}` : '';
+		// Warm the cache for the neighbours so swiping feels instant.
+		for (const n of [index - 1, index + 1]) {
+			const next = links[(n + links.length) % links.length];
+			if (next && next !== a) new Image().src = next.href;
+		}
+	}
+
+	function open(i: number) {
+		show(i);
+		if (!dialog.open) {
+			dialog.showModal();
+			// A history entry, so the phone's Back button closes the photo instead of leaving the page.
+			history.pushState({ lightbox: true }, '');
+		}
+	}
+
+	function close() {
+		if (history.state?.lightbox) history.back(); // popstate below closes the dialog
+		else dialog.close();
+	}
+
+	addEventListener('popstate', () => {
+		if (dialog.open) dialog.close();
+	});
+
+	document.addEventListener('click', (e) => {
+		const a = (e.target as Element).closest<HTMLAnchorElement>('a[data-lightbox]');
+		if (!a || e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+		const i = links.indexOf(a);
+		if (i < 0) return;
+		e.preventDefault();
+		open(i);
+	});
+
+	dialog.querySelector('.lb-close')!.addEventListener('click', close);
+	dialog.querySelector('.lb-prev')!.addEventListener('click', () => show(index - 1));
+	dialog.querySelector('.lb-next')!.addEventListener('click', () => show(index + 1));
+
+	// Clicking the dark area around the photo closes it.
+	dialog.addEventListener('click', (e) => {
+		if (e.target === dialog || e.target === dialog.querySelector('figure')) close();
+	});
+
+	// Esc: close through our own path so the history entry is cleaned up.
+	dialog.addEventListener('cancel', (e) => {
+		e.preventDefault();
+		close();
+	});
+
+	dialog.addEventListener('keydown', (e) => {
+		if (e.key === 'ArrowLeft') show(index - 1);
+		else if (e.key === 'ArrowRight') show(index + 1);
+	});
+
+	// Swipe left/right with one finger; ignored while pinch-zoomed in.
+	let startX = 0;
+	let startY = 0;
+	let tracking = false;
+	dialog.addEventListener(
+		'touchstart',
+		(e) => {
+			tracking = e.touches.length === 1 && (visualViewport?.scale ?? 1) <= 1.01;
+			startX = e.touches[0].clientX;
+			startY = e.touches[0].clientY;
+		},
+		{ passive: true },
+	);
+	dialog.addEventListener('touchend', (e) => {
+		if (!tracking) return;
+		tracking = false;
+		const dx = e.changedTouches[0].clientX - startX;
+		const dy = e.changedTouches[0].clientY - startY;
+		if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) show(index + (dx < 0 ? 1 : -1));
+	});
+</script>
+
+<style>
+	:global(html:has(dialog.lightbox[open])) {
+		overflow: hidden;
+	}
+	:global(main a[data-lightbox]) {
+		cursor: zoom-in;
+	}
+	.lightbox {
+		width: 100vw;
+		height: 100dvh;
+		max-width: none;
+		max-height: none;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		background: rgb(0 0 0 / 0.94);
+		color: #fff;
+	}
+	.lightbox::backdrop {
+		background: rgb(0 0 0 / 0.94);
+	}
+	figure {
+		box-sizing: border-box;
+		height: 100%;
+		margin: 0;
+		padding: 3.5rem 1rem 1rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 0.75rem;
+	}
+	img {
+		flex: 0 1 auto;
+		min-height: 0;
+		max-width: 100%;
+		max-height: 100%;
+		width: auto;
+		height: auto;
+		object-fit: contain;
+	}
+	figcaption {
+		max-width: 60ch;
+		text-align: center;
+		font-size: 0.95rem;
+		color: #ddd;
+	}
+	figcaption:empty {
+		display: none;
+	}
+	.lb-count {
+		position: absolute;
+		top: 0.9rem;
+		left: 1rem;
+		margin: 0;
+		font-size: 0.9rem;
+		color: #bbb;
+	}
+	button {
+		position: absolute;
+		min-width: 44px;
+		min-height: 44px;
+		border: 0;
+		border-radius: 999px;
+		background: rgb(255 255 255 / 0.12);
+		color: #fff;
+		font: 2rem/1 var(--sans);
+		cursor: pointer;
+	}
+	button:hover,
+	button:focus-visible {
+		background: rgb(255 255 255 / 0.25);
+	}
+	.lb-close {
+		top: 0.5rem;
+		right: 0.75rem;
+	}
+	.lb-prev,
+	.lb-next {
+		top: 50%;
+		transform: translateY(-50%);
+		padding-bottom: 0.2rem;
+	}
+	.lb-prev {
+		left: 0.5rem;
+	}
+	.lb-next {
+		right: 0.5rem;
+	}
+</style>

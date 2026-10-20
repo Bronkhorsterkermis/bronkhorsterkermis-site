@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import remarkMedia from './src/lib/remark-media.mjs';
+import rehypeExternalLinks from './src/lib/rehype-external-links.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,5 +12,6 @@ export default defineConfig({
 	trailingSlash: 'never',
 	markdown: {
 		remarkPlugins: [remarkMedia],
+		rehypePlugins: [rehypeExternalLinks],
 	},
 });
