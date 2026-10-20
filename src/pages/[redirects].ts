@@ -1,7 +1,12 @@
 /**
- * Netlify-style redirects from the old PHP site's URLs, generated from each page's `legacyId`:
- *   /4, /4/activiteiten.html, /index.php?page=4  ->  /activiteiten
- * (Cloudflare Pages reads the same file but ignores the query-string rule.)
+ * Redirects from the old PHP site's URLs, generated from each page's `legacyId`
+ * (Cloudflare Pages `_redirects` format, which Netlify also understands):
+ *   /4, /4/activiteiten.html  ->  /activiteiten
+ *   /index.php, /cms.php      ->  /
+ *
+ * Old `index.php?page=4` addresses all go to the home page: Cloudflare Pages ignores query
+ * strings in this file, and since the old site blocked search engines those links only live
+ * on in the odd bookmark, so a per-page redirect isn't worth a server-side function.
  *
  * Routed through a param because Astro skips src/pages files whose name starts with "_".
  */
@@ -20,7 +25,6 @@ export const GET: APIRoute = async () => {
 		const id = p.data.legacyId;
 		lines.push(`/${id}  ${to}  301`);
 		lines.push(`/${id}/*  ${to}  301`);
-		lines.push(`/index.php  page=${id}  ${to}  301`);
 	}
 	lines.push('/index.php  /  301');
 	lines.push('/cms.php  /  301');
