@@ -70,34 +70,53 @@ content:
 
   - name: documenten
     label: Activiteiten (programma's, notulen, uitnodigingen)
-    type: file
-    path: src/data/documenten.json
-    format: json
-    list: true
+    type: collection
+    path: src/content/documenten
+    format: yaml
+    filename: '{fields.jaar}.yml'
+    view:
+      primary: jaar
+      fields: [jaar]
+      sort: [jaar]
+      default:
+        sort: jaar
+        order: desc
     fields:
       - name: jaar
         label: Jaar
         type: number
         required: true
-      - name: soort
-        label: Soort
-        type: select
-        required: true
-        options:
-          values:
-            - Programma kermis
-            - Uitnodiging rekening & verantwoording
-            - Notulen rekening & verantwoording
-            - Winterkostmaaltijd / overig
-      - name: bestand
-        label: Bestand
+      - name: programma
+        label: Programma kermis
         type: file
-        required: true
         options:
           media: downloads
-      - name: titel
-        label: Linktekst (leeg = het jaartal)
-        type: string
+      - name: uitnodiging
+        label: Uitnodiging rekening & verantwoording
+        type: file
+        options:
+          media: downloads
+      - name: notulen
+        label: Notulen rekening & verantwoording
+        type: file
+        options:
+          media: downloads
+      - name: overig
+        label: Winterkostmaaltijd / overige documenten
+        description: Bijvoorbeeld de uitnodiging voor de winterkostmaaltijd of een barbecue.
+        type: object
+        list: true
+        fields:
+          - name: titel
+            label: Linktekst
+            description: Bijvoorbeeld de datum, zoals '7 februari 2026'. Leeg = het jaartal.
+            type: string
+          - name: bestand
+            label: Bestand
+            type: file
+            required: true
+            options:
+              media: downloads
 
   - name: koningen
     label: Galerij der Koningen

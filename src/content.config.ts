@@ -50,4 +50,18 @@ const koningen = defineCollection({
 	}),
 });
 
-export const collections = { pages, jaren, koningen };
+/** Activiteiten: one file per year with that year's documents (paths under /downloads). */
+const documenten = defineCollection({
+	loader: glob({ pattern: '*.{yml,yaml}', base: './src/content/documenten' }),
+	schema: z.object({
+		jaar: z.number(),
+		programma: z.string().optional(),
+		uitnodiging: z.string().optional(),
+		notulen: z.string().optional(),
+		overig: z
+			.array(z.object({ titel: z.string().optional(), bestand: z.string() }))
+			.default([]),
+	}),
+});
+
+export const collections = { pages, jaren, koningen, documenten };

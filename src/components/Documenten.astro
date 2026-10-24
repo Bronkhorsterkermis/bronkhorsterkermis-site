@@ -1,7 +1,17 @@
 ---
-import { DOC_SOORTEN, documenten } from '../lib/data';
+import { getCollection } from 'astro:content';
 
-const jaren = [...new Set(documenten.map((d) => d.jaar))].sort((a, b) => b - a);
+const jaren = (await getCollection('documenten')).map((e) => e.data).sort((a, b) => b.jaar - a.jaar);
+
+type Jaar = (typeof jaren)[number];
+type Link = { titel: string; bestand: string };
+/** The table's columns; the first three hold at most one document, the last any number. */
+const kolommen: { kop: string; links: (j: Jaar) => Link[] }[] = [
+	{ kop: 'Programma kermis', links: (j) => (j.programma ? [{ titel: `${j.jaar}`, bestand: j.programma }] : []) },
+	{ kop: 'Uitnodiging rekening & verantwoording', links: (j) => (j.uitnodiging ? [{ titel: `${j.jaar}`, bestand: j.uitnodiging }] : []) },
+	{ kop: 'Notulen rekening & verantwoording', links: (j) => (j.notulen ? [{ titel: `${j.jaar}`, bestand: j.notulen }] : []) },
+	{ kop: 'Winterkostmaaltijd / overig', links: (j) => j.overig.map((o) => ({ titel: o.titel ?? `${j.jaar}`, bestand: o.bestand })) },
+];
 const label = (bestand: string) => (bestand.match(/\.(\w+)$/)?.[1] ?? '').toUpperCase();
 ---
 
@@ -10,23 +20,21 @@ const label = (bestand: string) => (bestand.match(/\.(\w+)$/)?.[1] ?? '').toUppe
 		<thead>
 			<tr>
 				<th>Jaar</th>
-				{DOC_SOORTEN.map((s) => <th>{s}</th>)}
+				{kolommen.map((k) => <th>{k.kop}</th>)}
 			</tr>
 		</thead>
 		<tbody>
 			{
-				jaren.map((jaar) => (
+				jaren.map((j) => (
 					<tr>
-						<th scope="row">{jaar}</th>
-						{DOC_SOORTEN.map((soort) => (
+						<th scope="row">{j.jaar}</th>
+						{kolommen.map((k) => (
 							<td>
-								{documenten
-									.filter((d) => d.jaar === jaar && d.soort === soort)
-									.map((d) => (
-										<a href={encodeURI(d.bestand)}>
-											{d.titel ?? jaar} <span class="type">{label(d.bestand)}</span>
-										</a>
-									))}
+								{k.links(j).map((d) => (
+									<a href={encodeURI(d.bestand)}>
+										{d.titel} <span class="type">{label(d.bestand)}</span>
+									</a>
+								))}
 							</td>
 						))}
 					</tr>
