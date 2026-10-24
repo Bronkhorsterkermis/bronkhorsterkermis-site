@@ -1,6 +1,8 @@
 ---
-import { koningen } from '../lib/data';
+import { getCollection } from 'astro:content';
 import Foto from './Foto.astro';
+
+const koningen = (await getCollection('koningen')).map((e) => e.data).sort((a, b) => b.jaar - a.jaar);
 
 const heeftBeeld = (k: (typeof koningen)[number]) => Boolean(k.foto || k.video);
 // The photo grid runs down to the oldest year with a photo; a gap inside that range (e.g. no

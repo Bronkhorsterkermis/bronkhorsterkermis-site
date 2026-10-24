@@ -34,4 +34,20 @@ const jaren = defineCollection({
 	}),
 });
 
-export const collections = { pages, jaren };
+/** Galerij der Koningen: one file per year (or per period without kermis, e.g. 1939–1944). */
+const koningen = defineCollection({
+	loader: glob({ pattern: '*.{yml,yaml}', base: './src/content/koningen' }),
+	schema: z.object({
+		jaar: z.number(),
+		/** Last year of a range, e.g. 1939–1944 without kermis. */
+		tot: z.number().optional(),
+		koning: z.string().optional(),
+		foto: z.string().optional(),
+		/** Optional own crop shown in the gallery; `foto` is what the lightbox enlarges. */
+		fotoKlein: z.string().optional(),
+		video: z.string().optional(),
+		opmerking: z.string().optional(),
+	}),
+});
+
+export const collections = { pages, jaren, koningen };

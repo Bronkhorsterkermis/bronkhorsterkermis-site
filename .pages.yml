@@ -101,10 +101,17 @@ content:
 
   - name: koningen
     label: Galerij der Koningen
-    type: file
-    path: src/data/koningen.json
-    format: json
-    list: true
+    type: collection
+    path: src/content/koningen
+    format: yaml
+    filename: '{fields.jaar}.yml'
+    view:
+      primary: jaar
+      fields: [jaar, koning]
+      sort: [jaar]
+      default:
+        sort: jaar
+        order: desc
     fields:
       - name: jaar
         label: Jaar

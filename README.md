@@ -24,7 +24,7 @@ comes from `.node-version`. `public/_headers` sets long caching for Astro's hash
 | --- | --- | --- |
 | Pages (Markdown) | `src/content/pages/*.md` | `/<slug>`; `home.md` is `/` |
 | Kermisjaren | `src/content/jaren/<jaar>.md` | home page, newest first |
-| Galerij der Koningen | `src/data/koningen.json` | `/galerij-der-koningen` |
+| Galerij der Koningen | `src/content/koningen/<jaar>.yml` | `/galerij-der-koningen` |
 | Programma's, notulen, uitnodigingen | `src/data/documenten.json` | `/activiteiten` |
 | Foto Archief | `src/data/fotoarchief.json` | `/foto-archief` |
 | Contact details (sidebar) | `src/data/site.json` | every page |
