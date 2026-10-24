@@ -16,7 +16,7 @@ const jaar = (k: (typeof koningen)[number]) => (k.tot ? `${k.jaar}–${k.tot}` :
 	{
 		metFoto.map((k) => (
 			<figure>
-				{k.foto && <Foto src={k.foto} alt={`Koning ${k.jaar}: ${k.koning}`} width={200} />}
+				{k.foto && <Foto src={k.foto} klein={k.fotoKlein} alt={`Koning ${k.jaar}: ${k.koning}`} width={200} />}
 				{k.video && (
 					<video controls preload="none" src={encodeURI(k.video)}>
 						<a href={encodeURI(k.video)}>Bekijk de video</a>

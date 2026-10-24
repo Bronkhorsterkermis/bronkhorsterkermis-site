@@ -47,6 +47,14 @@ content:
               media: fotos
               rename: true
               path: src/assets/media/jaren
+          - name: fotoKlein
+            label: Foto klein (uitsnede)
+            description: Optioneel. Een eigen uitsnede voor op de pagina; bij klikken wordt de Foto hierboven groot getoond.
+            type: image
+            options:
+              media: fotos
+              rename: true
+              path: src/assets/media/jaren
           - name: bijschrift
             label: Bijschrift
             type: text
@@ -113,6 +121,14 @@ content:
           media: fotos
           rename: true
           path: src/assets/media/koningen
+      - name: fotoKlein
+        label: Foto klein (uitsnede)
+        description: Optioneel. Een eigen uitsnede voor in de galerij; bij klikken wordt de Foto hierboven groot getoond.
+        type: image
+        options:
+          media: fotos
+          rename: true
+          path: src/assets/media/koningen
       - name: video
         label: Video
         type: file
@@ -131,6 +147,14 @@ content:
     fields:
       - name: foto
         label: Foto
+        type: image
+        options:
+          media: fotos
+          rename: true
+          path: src/assets/media/fotoarchief
+      - name: fotoKlein
+        label: Foto klein (uitsnede)
+        description: Optioneel. Een eigen uitsnede voor op de pagina; bij klikken wordt de Foto hierboven groot getoond.
         type: image
         options:
           media: fotos

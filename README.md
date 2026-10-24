@@ -43,6 +43,9 @@ comes from `.node-version`. `public/_headers` sets long caching for Astro's hash
   links go to the home page.
 - Links to other websites open in a new tab with a ↗ (`src/lib/rehype-external-links.mjs`);
   every photo opens in a full-screen viewer (`src/components/Lightbox.astro`).
+- Photos on the home page, in the Galerij and in the Foto Archief can have an optional
+  `fotoKlein` ("Foto klein (uitsnede)" in the CMS): a separately cropped thumbnail shown on the
+  page, while the lightbox enlarges `foto`. Without it the thumbnail is `foto` scaled down.
 
 ## Editing (Pages CMS)
 

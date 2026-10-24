@@ -7,7 +7,7 @@ import Foto from './Foto.astro';
 	{
 		fotoarchief.map((f) => (
 			<figure>
-				{f.foto && <Foto src={f.foto} alt={f.bijschrift || 'Archieffoto'} width={420} />}
+				{f.foto && <Foto src={f.foto} klein={f.fotoKlein} alt={f.bijschrift || 'Archieffoto'} width={420} />}
 				{f.bijschrift && <figcaption>{f.bijschrift}</figcaption>}
 			</figure>
 		))

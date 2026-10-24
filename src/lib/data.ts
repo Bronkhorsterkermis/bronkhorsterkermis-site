@@ -21,6 +21,8 @@ const koning = z.object({
 	tot: z.number().optional(),
 	koning: z.string().optional(),
 	foto: z.string().optional(),
+	/** Optional own crop shown in the gallery; `foto` is what the lightbox enlarges. */
+	fotoKlein: z.string().optional(),
 	video: z.string().optional(),
 	opmerking: z.string().optional(),
 });
@@ -34,6 +36,7 @@ const document = z.object({
 
 const archieffoto = z.object({
 	foto: z.string().optional(),
+	fotoKlein: z.string().optional(),
 	bijschrift: z.string().optional(),
 });
 

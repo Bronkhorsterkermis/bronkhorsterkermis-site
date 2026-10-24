@@ -25,6 +25,8 @@ const jaren = defineCollection({
 			.array(
 				z.object({
 					foto: z.string().optional(),
+					/** Optional own crop shown on the page; `foto` is what the lightbox enlarges. */
+					fotoKlein: z.string().optional(),
 					bijschrift: z.string().optional(),
 				}),
 			)

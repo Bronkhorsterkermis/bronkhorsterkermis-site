@@ -23,7 +23,7 @@ const rendered = await Promise.all(jaren.map((j) => render(j)));
 				<div class="items">
 					{jaar.data.items.map((item) => (
 						<figure>
-							{item.foto && <Foto src={item.foto} alt={item.bijschrift || `Kermis ${jaar.data.jaar}`} width={360} />}
+							{item.foto && <Foto src={item.foto} klein={item.fotoKlein} alt={item.bijschrift || `Kermis ${jaar.data.jaar}`} width={360} />}
 							{item.bijschrift && <figcaption>{item.bijschrift}</figcaption>}
 						</figure>
 					))}

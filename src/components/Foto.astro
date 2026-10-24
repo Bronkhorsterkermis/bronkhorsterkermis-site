@@ -2,6 +2,9 @@
 /**
  * A content image (CMS path "/media/..."), resized, linking to a large version that the
  * Lightbox shows full-screen (data-srcset lets phones load the 800px variant).
+ *
+ * `klein` is an optional separately cropped thumbnail: the page shows it, while the
+ * lightbox still enlarges `src`. Without it the thumbnail is `src` scaled down.
  */
 import { Image, getImage } from 'astro:assets';
 import { media } from '../lib/media';
@@ -9,12 +12,15 @@ import { media } from '../lib/media';
 interface Props {
 	src: string;
 	alt: string;
+	/** Optional own crop for the thumbnail (CMS path "/media/..."). */
+	klein?: string;
 	/** Rendered width hint for responsive sizes, in CSS pixels. */
 	width?: number;
 }
 
-const { src, alt, width = 480 } = Astro.props;
+const { src, alt, klein, width = 480 } = Astro.props;
 const image = media(src);
+const thumb = klein ? media(klein) : image;
 const groot = await Promise.all(
 	[...new Set([800, 1600].map((w) => Math.min(w, image.width)))].map((w) =>
 		getImage({ src: image, width: w }).then((r) => ({ w, src: r.src })),
@@ -26,9 +32,9 @@ const srcset = groot.map((g) => `${g.src} ${g.w}w`).join(', ');
 
 <a class="foto" href={largest} data-lightbox data-srcset={srcset}>
 	<Image
-		src={image}
+		src={thumb}
 		alt={alt}
-		widths={[width, width * 2].filter((w) => w <= image.width)}
+		widths={[...new Set([width, width * 2].map((w) => Math.min(w, thumb.width)))]}
 		sizes={`(max-width: ${width + 32}px) calc(100vw - 32px), ${width}px`}
 	/>
 </a>
