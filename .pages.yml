@@ -48,8 +48,8 @@ content:
               rename: true
               path: src/assets/media/jaren
           - name: fotoKlein
-            label: Foto klein (uitsnede)
-            description: Optioneel. Een eigen uitsnede voor op de pagina; bij klikken wordt de Foto hierboven groot getoond.
+            label: "Optioneel: foto klein (uitsnede)"
+            description: Een eigen uitsnede voor op de pagina; bij klikken wordt de Foto hierboven groot getoond.
             type: image
             options:
               media: fotos
@@ -122,8 +122,8 @@ content:
           rename: true
           path: src/assets/media/koningen
       - name: fotoKlein
-        label: Foto klein (uitsnede)
-        description: Optioneel. Een eigen uitsnede voor in de galerij; bij klikken wordt de Foto hierboven groot getoond.
+        label: "Optioneel: foto klein (uitsnede)"
+        description: Een eigen uitsnede voor in de galerij; bij klikken wordt de Foto hierboven groot getoond.
         type: image
         options:
           media: fotos
@@ -153,8 +153,8 @@ content:
           rename: true
           path: src/assets/media/fotoarchief
       - name: fotoKlein
-        label: Foto klein (uitsnede)
-        description: Optioneel. Een eigen uitsnede voor op de pagina; bij klikken wordt de Foto hierboven groot getoond.
+        label: "Optioneel: foto klein (uitsnede)"
+        description: Een eigen uitsnede voor op de pagina; bij klikken wordt de Foto hierboven groot getoond.
         type: image
         options:
           media: fotos
