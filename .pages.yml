@@ -42,6 +42,7 @@ content:
         fields:
           - name: foto
             label: Foto
+            description: "Maak foto's eerst kleiner (ca. 2000 pixels breed, kleiner dan 3 MB); grotere bestanden worden geweigerd."
             type: image
             options:
               media: fotos
@@ -49,7 +50,7 @@ content:
               path: src/assets/media/jaren
           - name: fotoKlein
             label: "Optioneel: foto klein (uitsnede)"
-            description: Een eigen uitsnede voor op de pagina; bij klikken wordt de Foto hierboven groot getoond.
+            description: Een eigen uitsnede voor op de pagina; bij klikken wordt de Foto hierboven groot getoond. Maak foto's eerst kleiner (ca. 2000 pixels breed, kleiner dan 3 MB); grotere bestanden worden geweigerd.
             type: image
             options:
               media: fotos
@@ -60,6 +61,7 @@ content:
             type: text
       - name: body
         label: Extra tekst (optioneel)
+        description: "Foto's in de tekst: maak foto's eerst kleiner (ca. 2000 pixels breed, kleiner dan 3 MB); grotere bestanden worden geweigerd."
         type: rich-text
         options:
           format: markdown
@@ -116,6 +118,7 @@ content:
         type: string
       - name: foto
         label: Foto
+        description: "Maak foto's eerst kleiner (ca. 2000 pixels breed, kleiner dan 3 MB); grotere bestanden worden geweigerd."
         type: image
         options:
           media: fotos
@@ -123,7 +126,7 @@ content:
           path: src/assets/media/koningen
       - name: fotoKlein
         label: "Optioneel: foto klein (uitsnede)"
-        description: Een eigen uitsnede voor in de galerij; bij klikken wordt de Foto hierboven groot getoond.
+        description: Een eigen uitsnede voor in de galerij; bij klikken wordt de Foto hierboven groot getoond. Maak foto's eerst kleiner (ca. 2000 pixels breed, kleiner dan 3 MB); grotere bestanden worden geweigerd.
         type: image
         options:
           media: fotos
@@ -147,6 +150,7 @@ content:
     fields:
       - name: foto
         label: Foto
+        description: "Maak foto's eerst kleiner (ca. 2000 pixels breed, kleiner dan 3 MB); grotere bestanden worden geweigerd."
         type: image
         options:
           media: fotos
@@ -154,7 +158,7 @@ content:
           path: src/assets/media/fotoarchief
       - name: fotoKlein
         label: "Optioneel: foto klein (uitsnede)"
-        description: Een eigen uitsnede voor op de pagina; bij klikken wordt de Foto hierboven groot getoond.
+        description: Een eigen uitsnede voor op de pagina; bij klikken wordt de Foto hierboven groot getoond. Maak foto's eerst kleiner (ca. 2000 pixels breed, kleiner dan 3 MB); grotere bestanden worden geweigerd.
         type: image
         options:
           media: fotos
@@ -190,6 +194,7 @@ content:
         default: true
       - name: body
         label: Tekst
+        description: "Foto's in de tekst: maak foto's eerst kleiner (ca. 2000 pixels breed, kleiner dan 3 MB); grotere bestanden worden geweigerd."
         type: rich-text
         options:
           format: markdown

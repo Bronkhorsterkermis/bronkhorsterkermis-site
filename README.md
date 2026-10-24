@@ -52,6 +52,11 @@ comes from `.node-version`. `public/_headers` sets long caching for Astro's hash
 The CMS is configured in `.pages.yml`. Editors without a GitHub account are invited by email as
 *collaborators* in Pages CMS; they can edit content and upload media but not change the configuration.
 
+Uploads through Pages CMS fail (HTTP 403) for files of roughly 4 MB and up, most likely a request
+size limit on its servers. Resize photos to about 2000 px on the longest side first: the site
+never shows anything larger than 1600 px, and it keeps the repository small. The photo fields in
+`.pages.yml` say so to editors.
+
 ## Development
 
 Requires Node.js ≥ 22.
